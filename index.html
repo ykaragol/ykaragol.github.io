@@ -40,6 +40,11 @@
 		    <table id="repos">
 		    	<tr><th>Repo Name</th><th>Repo Desc</th></tr>
 		    </table>
+		  </div>		  
+		  <div>
+		    <table id="posts">
+		    	<tr><th>Posts</th><th>...</th></tr>
+		    </table>
 		  </div>
 		</div>
         </section>
@@ -68,6 +73,25 @@ $.ajax({
 		for(var i in response.data){
 			repo = response.data[i];
 			$("#repos").append("<tr><td><a href='"+repo.html_url+"'>"+repo.name+"</a></td><td>"+repo.description+"</td></tr>");
+		}
+		
+    }
+});
+$.ajax({
+    url: "https://api.github.com/repos/ykaragol/ykaragol.github.io/contents/blogs?callback=asd",
+ 
+    // The name of the callback parameter, as specified by the YQL service
+    jsonp: "callback",
+ 
+    // Tell jQuery we're expecting JSONP
+    dataType: "jsonp",
+ 
+ 
+    // Work with the response
+    success: function( response ) {
+		for(var i in response.data){
+			post = response.data[i];
+			$("#posts").append("<tr><td><a href='"+post.download_url+"'>"+post.name+"</a></td><td>"+post.description+"</td></tr>");
 		}
 		
     }
