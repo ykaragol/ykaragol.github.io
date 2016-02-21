@@ -77,6 +77,8 @@ function loadPosts(){
 	    success: function( response ) {
 	    		alert(window.atob);
 	    		alert(atob);
+	    		alert(response.data);
+	    		alert(response.data.content);
 			decoder = window.atob || atob;
 			var content = decoder(response.data.content);
 			var json = JSON.parse(content);
