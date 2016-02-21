@@ -21,6 +21,9 @@
     <title>ykaragol.github.io by ykaragol</title>
     
       <script type="text/javascript">
+		window.onerror = function(errorMsg, url, line) {
+                	window.alert('asdf');
+                };";
 
 	function display(markdownContent){
 		$.ajax({
@@ -75,10 +78,6 @@ function loadPosts(){
 	 
 	    // Work with the response
 	    success: function( response ) {
-	    		alert(window.atob);
-	    		alert(atob);
-	    		alert(response.data);
-	    		alert(response.data.content);
 			decoder = window.atob || atob;
 			var content = decoder(response.data.content);
 			var json = JSON.parse(content);
