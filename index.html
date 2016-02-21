@@ -75,12 +75,11 @@ function loadPosts(){
 	 
 	    // Work with the response
 	    success: function( response ) {
-			alert('response');
+	    		alert(window.atob);
+	    		alert(atob);
 			decoder = window.atob || atob;
 			var content = decoder(response.data.content);
-			alert('content');
 			var json = JSON.parse(content);
-			alert('json');
 			var posts = json.posts;
 			for(var i in posts){
 				post = posts[i];
