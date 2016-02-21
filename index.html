@@ -75,8 +75,11 @@ function loadPosts(){
 	 
 	    // Work with the response
 	    success: function( response ) {
+			alert('response');
 			var content = window.atob(response.data.content);
+			alert('content');
 			var json = JSON.parse(content);
+			alert('json');
 			var posts = json.posts;
 			for(var i in posts){
 				post = posts[i];
@@ -90,7 +93,7 @@ function loadPosts(){
 				
 				var link = document.createElement('a');
 				link.setAttribute('href', '#blob_section');
-				link.setAttribute('onclick', 'getAndDisplayMd(\""+ postURL +"\",\""+post.title+"\");');
+				link.setAttribute('onclick', 'getAndDisplayMd(\"'+ postURL +'\",\"'+post.title+'\");');
 				td1.appendChild(link);
 				
 				var td2= document.createElement('td');
