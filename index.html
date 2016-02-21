@@ -76,7 +76,8 @@ function loadPosts(){
 	    // Work with the response
 	    success: function( response ) {
 			alert('response');
-			var content = window.atob(response.data.content);
+			decoder = window.atob || atob;
+			var content = decoder(response.data.content);
 			alert('content');
 			var json = JSON.parse(content);
 			alert('json');
@@ -89,12 +90,14 @@ function loadPosts(){
 				document.getElementById('posts_body').appendChild(tr);
 				
 				var td1= document.createElement('td');
-				tr.appendChild(td1);
 				
 				var link = document.createElement('a');
 				link.setAttribute('href', '#blob_section');
 				link.setAttribute('onclick', 'getAndDisplayMd(\"'+ postURL +'\",\"'+post.title+'\");');
+				var title = document.createTextNode(post.title);
+				link.appendChild(title);
 				td1.appendChild(link);
+				tr.appendChild(td1);
 				
 				var td2= document.createElement('td');
 				var date = document.createTextNode(post.written_date);
