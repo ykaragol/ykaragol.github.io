@@ -21,11 +21,6 @@
     <title>ykaragol.github.io by ykaragol</title>
     
       <script type="text/javascript">
-		window.onerror = function(errorMsg, url, line) {
-                	window.alert(errorMsg);
-                	window.alert(line);
-                };
-
 	function display(markdownContent){
 		$.ajax({
 			url: "https://api.github.com/markdown",  
@@ -58,7 +53,9 @@
 		 
 			// Work with the response
 			success: function( response ) {
-				var markdownContent = window.atob(response.data.content);
+				var content = response.data.content;
+				content = content.replace(/\s/g, '');
+				var markdownContent = window.atob(content);
 				display(markdownContent);		
 			}
 		});
