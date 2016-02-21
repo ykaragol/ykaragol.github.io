@@ -81,9 +81,29 @@ function loadPosts(){
 			for(var i in posts){
 				post = posts[i];
 				var postURL = 'https://api.github.com/repos/ykaragol/ykaragol.github.io/contents/blogs/'+post.page_name;
-					$("#posts").append("<tr><td>"+
-					"<a href='#blob_section' onclick='getAndDisplayMd(\""+ postURL +"\",\""+post.title+"\");'>"+post.title+"</a>"+
-					"</td><td>"+post.written_date+"</td><td>"+post.description+"</td></tr>");
+				
+				var tr = document.createElement('tr');
+				document.getElementById('posts_body').appendChild(tr);
+				
+				var td1= document.createElement('td');
+				tr.appendChild(td1);
+				
+				var link = document.createElement('a');
+				link.setAttribute('href', '#blob_section');
+				link.setAttribute('onclick', 'getAndDisplayMd(\""+ postURL +"\",\""+post.title+"\");');
+				td1.appendChild(link);
+				
+				var td2= document.createElement('td');
+				var date = document.createTextNode(post.written_date);
+				td2.appendChild(date);
+				tr.appendChild(td2);
+				
+				
+				var td3= document.createElement('td');
+				var desc = document.createTextNode(post.description);
+				td3.appendChild(desc);
+				tr.appendChild(td3);
+				
 			}
 			
 	    }
@@ -111,7 +131,12 @@ function loadPosts(){
 			<h4>My Posts</h4>
 		  	<div class="table-responsive">
 		    		<table id="posts" class="table-striped table-bordered table-hover table-condensed">
-		    			<tr><th>Posts</th><th>Publish Date</th><th>Description</th></tr>
+		    			<thead>
+		    				<tr><th>Posts</th><th>Publish Date</th><th>Description</th></tr>
+		    			</thead>
+		    			<tbody id="posts_body">
+		    				
+		    			</tbody>
 		    		</table>
 		  	</div>
 		</div>
