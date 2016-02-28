@@ -1,0 +1,34 @@
+<html>
+<head>
+ <meta charset="UTF-8"> 
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+<script>
+	function keyPressed(event){
+		var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
+		var key = (String.fromCharCode(chCode));
+		responsiveVoice.speak(key, 'Turkish Female');
+		if (chCode == 13) {
+			submitAll(event.target.value);
+			return false;
+        }
+	}
+	function submitAll(value){
+		console.log(value);
+		var area1 = document.getElementById('area1');
+		responsiveVoice.speak(area1.value, 'Turkish Female');
+	}
+</script>
+
+<style>
+textarea {
+   width: 100%;
+   font-size: 90pt;
+   font-family: "Trebuchet MS", "Comic Sans MS", Tahoma, Geneva, sans-serif;
+   text-transform: uppercase;
+} 
+</style>
+</head>
+<body>
+<textarea id="area1" onkeypress="keyPressed(event);" rows="3"  placeholder="Kelimenizi yavaş yavaş yazınız, sonra 'enter'a basınız." ></textarea>
+</body>
+</html>
