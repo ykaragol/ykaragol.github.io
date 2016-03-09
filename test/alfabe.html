@@ -39,7 +39,12 @@
     var lastCall=null;
 
 	function keyPressed(event){
-        if(lastCall !=null){
+		var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
+		var key = (String.fromCharCode(chCode));
+        var v = map[key];
+        if(!v)
+            return;
+	if(lastCall !=null){
             console.log(Date.now());
             console.log(lastCall);
             console.log(Date.now()-lastCall);
@@ -48,11 +53,6 @@
             }
         }
         lastCall = Date.now();
-		var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
-		var key = (String.fromCharCode(chCode));
-        var v = map[key];
-        if(!v)
-            return;
         document.getElementById('area1').value = v.key;
         document.getElementById('animalImage').src ="";
         $("#area1").fadeOut(400, "swing", function(){
