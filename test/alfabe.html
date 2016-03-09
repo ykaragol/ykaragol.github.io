@@ -1,0 +1,101 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script src='./js/jquery-2.2.1.min.js'></script>
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+<script>
+
+    var map={
+        "a":{"key":"A", "text":"Ayı","imgSrc":"ayı.jpg"},
+        "b":{"key":"B", "text":"Balık","imgSrc":"balık.jpg"},
+        "c":{"key":"C", "text":"Cırcır Böceği","imgSrc":"cır_cır_böceği.jpg"},
+        "d":{"key":"D", "text":"Deve","imgSrc":"deve.jpg"},
+        "e":{"key":"E", "text":"Eşek","imgSrc":"eşek.jpg"},
+        "f":{"key":"F", "text":"Fil","imgSrc":"fil.jpg"},
+        "g":{"key":"G", "text":"Gergedan","imgSrc":"gergedan.jpg"},
+        "h":{"key":"H", "text":"Horoz","imgSrc":"horoz.jpg"},
+        "i":{"key":"İ", "text":"İnek","imgSrc":"inek.jpg"},
+        "j":{"key":"J", "text":"Jaguar","imgSrc":"jaguar.jpg"},
+        "k":{"key":"K", "text":"Kanguru","imgSrc":"kangaru.jpg"},
+        "l":{"key":"L", "text":"Leylek","imgSrc":"leylek.jpg"},
+        "m":{"key":"M", "text":"Maymun","imgSrc":"maymun.jpg"},
+        "o":{"key":"O", "text":"Orangutan","imgSrc":"orangutan.jpg"},
+        "p":{"key":"P", "text":"Penguen","imgSrc":"penguen.jpg"},
+        "r":{"key":"R", "text":"Ren Geyiği","imgSrc":"ren_geyiği.jpg"},
+        "s":{"key":"S", "text":"Salyangoz","imgSrc":"salyangoz.jpg"},
+        "t":{"key":"T", "text":"Tavşan","imgSrc":"tavşan.jpg"},
+        "u":{"key":"U", "text":"Uğur Böceği","imgSrc":"uğur_böceği.jpg"},
+        "v":{"key":"V", "text":"Van Kedisi","imgSrc":"van_kedisi.jpg"},
+        "y":{"key":"Y", "text":"Yunus","imgSrc":"yunus.jpg"},
+        "z":{"key":"Z", "text":"Zürafa","imgSrc":"zürafa.jpg"},
+        "ç":{"key":"Ç", "text":"Çita","imgSrc":"çita.jpg"},
+        "ö":{"key":"Ö", "text":"Ördek","imgSrc":"ördek.jpg"},
+        "ü":{"key":"Ü", "text":"Üveyik","imgSrc":"üveyik.jpg"},
+        "ı":{"key":"I", "text":"Istakoz","imgSrc":"ıstakoz.jpg"},
+        "ş":{"key":"Ş", "text":"Şahin","imgSrc":"şahin.jpg"},
+        "n":{"key":"N", "text":"N","imgSrc":""},
+    };
+
+    var lastCall=null;
+
+	function keyPressed(event){
+        if(lastCall !=null){
+            console.log(Date.now());
+            console.log(lastCall);
+            console.log(Date.now()-lastCall);
+            if(Date.now()-lastCall < 6000){
+                return;
+            }
+        }
+        lastCall = Date.now();
+		var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
+		var key = (String.fromCharCode(chCode));
+        var v = map[key];
+        if(!v)
+            return;
+        document.getElementById('area1').value = v.key;
+        document.getElementById('animalImage').src ="";
+        $("#area1").fadeOut(400, "swing", function(){
+            $("#area1").fadeIn();
+            responsiveVoice.speak(v.key, 'Turkish Female');
+        });
+        setTimeout(function(){
+            $("#area1").fadeOut(400, "swing", function(){
+                $("#area1").fadeIn();
+                responsiveVoice.speak(v.key, 'Turkish Female');
+            });
+        }, 2000);
+        setTimeout(function(){
+            document.getElementById('animalImage').src='./hayvan-resimleri/'+ v.imgSrc;
+            responsiveVoice.speak(v.text, 'Turkish Female');
+        }, 4000);
+
+	}
+</script>
+
+<style>
+textarea {
+   width: 80%;
+   font-size: 300pt;
+   font-family: "Trebuchet MS", "Comic Sans MS", Tahoma, Geneva, sans-serif;
+   text-transform: uppercase;
+}
+img{
+    max-width:100%;
+}
+
+div {
+    display: inline-block;
+    width: 40%;
+}
+</style>
+</head>
+<body onkeypress="keyPressed(event);">
+<div id="textdiv">
+    <textarea id="area1" rows="1" readonly="true"></textarea>
+</div>
+<div id="imgdiv">
+    <img id="animalImage" src="" />
+</div>
+</body>
+</html>
