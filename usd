@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<audio id='a' type="audio/mpeg">
+</audio>
+
+<button onclick="document.getElementById('a').src='/dist/sesler/tr/ayi.mp3';document.getElementById('a').play();">Click me</button>
+</body>
+</html>
