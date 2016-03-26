@@ -1,0 +1,69 @@
+.row > [class*=" col-"] {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.bottom-align-text {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+}
+
+@media (min-width: 760px) {
+  .bottom-align-text {
+    position: absolute;
+    bottom: 100px;
+    right: 0;
+  }
+}
+
+#Intro {
+  top: 0;
+  position: fixed;
+  background-color: #fff;
+  height: 50px;
+  width: 100%;
+}
+
+.navbar-fixed-top {
+  top: 50px;
+}
+body { padding-top: 100px; }
+
+textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  width: 100%;
+  font-size: 150pt;
+  font-family: "Trebuchet MS", "Comic Sans MS", Tahoma, Geneva, sans-serif;
+  text-align: center;
+}
+
+.image-pane {
+  height: 300px;
+  margin-top:5px;
+}
+
+.img-style{
+  max-width:100%;
+  max-height:100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media (orientation: landscape) {
+  .only-vertical{
+    display: none;
+  }
+}
+
+#div{
+  overflow: hidden;
+}
