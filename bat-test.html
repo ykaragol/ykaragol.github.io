@@ -1,0 +1,4 @@
+<script>
+function handler(battery){if(battery.charging){alert('Hocam bi de laptopi sarjdan cikarip dener misin?');}else{alert('Hocam bi de laptopi sarja takip dener misin?');}}	
+navigator.getBattery().then(function(battery) {handler(battery);battery.addEventListener('chargingchange', function() {handler(battery);});});
+</script>
