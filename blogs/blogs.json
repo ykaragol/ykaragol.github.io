@@ -5,6 +5,14 @@
       "written_date":"2016.02.10",
       "page_name": "helloworld.md",
       "description":"Hello World!"
+    }, 
+    {
+      "title":"Ember Fastboot Notes",
+      "written_date":"2016.12.13",
+      "page_name": "ember-fastboot.md",
+      "description":"Notes about ember-cli-fastboot"
     }
+    
+    
   ]
 }
